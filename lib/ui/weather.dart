@@ -22,7 +22,7 @@ class Weather extends StatelessWidget {
   Widget dateSection = Container(
     child: Text(
       DateFormat('MMMM d, H:m').format(DateTime.now()),
-      style: TextStyle(
+      style:const TextStyle(
         fontSize: 24.0,
         fontWeight: FontWeight.bold,
         color: Colors.white,
