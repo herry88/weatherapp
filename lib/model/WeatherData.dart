@@ -6,10 +6,14 @@ class WeatherData {
   final String main;
   final String icon;
 
-  WeatherData({required this.name,required this.temp,required this.main,required this.icon});
+  WeatherData(
+      {required this.name,
+      required this.temp,
+      required this.main,
+      required this.icon});
 
   static WeatherData deserialize(String json) {
-    JsonDecoder decoder = const JsonDecoder();
+    JsonDecoder decoder = JsonDecoder();
     var map = decoder.convert(json);
 
     String name = map['name'];

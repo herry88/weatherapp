@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' show Client;
 import 'package:weatherapps/model/WeatherData.dart';
 
@@ -27,5 +29,6 @@ class MapApi {
         await client.get(Uri.parse(_apiCall(lat: lat, lon: lon)), headers: {
       'Accept': 'application/json',
     });
+    return WeatherData.deserialize(json.decode(response.body));
   }
 }
