@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:weatherapps/model/WeatherData.dart';
 
 class Weather extends StatelessWidget {
-  Weather({Key? key}) : super(key: key);
+  WeatherData? weatherData;
+  Weather({Key? key, this.weatherData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,9 @@ class Weather extends StatelessWidget {
         children: [
           dateSection,
           tempSection,
-          SizedBox(height: 20.0,),
+          SizedBox(
+            height: 20.0,
+          ),
           descSection,
         ],
       ),
@@ -22,7 +26,7 @@ class Weather extends StatelessWidget {
   Widget dateSection = Container(
     child: Text(
       DateFormat('MMMM d, H:mm').format(DateTime.now()),
-      style:const TextStyle(
+      style: const TextStyle(
         fontSize: 24.0,
         fontWeight: FontWeight.bold,
         color: Colors.white,
@@ -39,7 +43,7 @@ class Weather extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '20',
+          weatherData?.temp.toStringAsFixed(0) ?? '',
           style: TextStyle(
             fontSize: 80.0,
             fontWeight: FontWeight.bold,
@@ -74,26 +78,26 @@ class Weather extends StatelessWidget {
   );
 
   Widget descSection = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            'Bekasi',
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Bekasi',
+          style: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
-          Text(
-            'Cloudy',
-            style: TextStyle(
-              fontSize: 24.0,
-              color: Colors.white,
-            ),
-          )
-        ],
-      ),
-    );
+        ),
+        Text(
+          'Cloudy',
+          style: TextStyle(
+            fontSize: 24.0,
+            color: Colors.white,
+          ),
+        )
+      ],
+    ),
+  );
 }

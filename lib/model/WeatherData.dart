@@ -1,20 +1,15 @@
 import 'dart:convert';
 
-class WeatherModel {
+class WeatherData {
   final String name;
   final double temp;
   final String main;
   final String icon;
 
-  WeatherModel({
-    required this.name,
-    required this.temp,
-    required this.main,
-    required this.icon,
-  });
+  WeatherData({required this.name,required this.temp,required this.main,required this.icon});
 
-  static WeatherModel deserialize(String json) {
-    JsonDecoder decoder = JsonDecoder();
+  static WeatherData deserialize(String json) {
+    JsonDecoder decoder = const JsonDecoder();
     var map = decoder.convert(json);
 
     String name = map['name'];
@@ -22,11 +17,6 @@ class WeatherModel {
     String main = map['weather'][0]['main'];
     String icon = map['weather'][0]['icon'];
 
-    return WeatherModel(
-      name: name,
-      temp: temp,
-      main: main,
-      icon: icon,
-    );
+    return WeatherData(name: name, temp: temp, main: main, icon: icon);
   }
 }
