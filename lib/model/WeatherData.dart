@@ -14,7 +14,7 @@ class WeatherModel {
   });
 
   static WeatherModel deserialize(String json) {
-    JsonDecoder decoder = JsonDecoder();
+    JsonDecoder decoder = const JsonDecoder();
     var map = decoder.convert(json);
 
     String name = map['name'];
