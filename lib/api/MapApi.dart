@@ -23,9 +23,12 @@ class MapApi {
 
   // get weather data
   getWeatherData({double? lat, double? lon}) async {
-    var response = await client.get(Uri.parse(_apiCall(lat: lat, lon: lon)));
+    var response = await client.get(Uri.parse(_apiCall(lat: lat, lon: lon))
+    ,headers: {
+      'Accept': 'application/json',
+    });
     if (response.statusCode == 200) {
-      return WeatherModel.deserialize(response.body);
+      return WeatherData.deserialize(response.body);
     } else {
       throw Exception('Failed to load weather data');
     }    
