@@ -43,7 +43,7 @@ class Weather extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          weatherData.temp.toStringAsFixed(0) + '°',
+          weatherData?.temp.toStringAsFixed(0) ?? '',
           style: TextStyle(
             fontSize: 80.0,
             fontWeight: FontWeight.bold,
